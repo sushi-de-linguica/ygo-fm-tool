@@ -1,0 +1,10 @@
+.vs/
+packages/
+
+# FM.App
+FM.App/bin/
+FM.App/obj/
+
+# FM.Core
+FM.Core/bin/
+FM.Core/obj/
