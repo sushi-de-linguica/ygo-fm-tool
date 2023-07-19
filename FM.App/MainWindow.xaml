@@ -1,0 +1,218 @@
+﻿<Window x:Class="FM.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FM.App"
+        mc:Ignorable="d"
+        Title="Yugioh is definitely one of the games ever made"
+        Height="450" 
+        Width="450"
+        MaxHeight="450" 
+        MinWidth="450"
+        ScrollViewer.VerticalScrollBarVisibility="Auto" 
+        WindowStyle="ThreeDBorderWindow"
+        Initialized="Window_Initialized">
+    <Grid HorizontalAlignment="Center" Width="418" Margin="0,0,0,11">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="418"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" Width="418" Margin="0,10,0,0" Height="413" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5" Height="22">
+                <Button x:Name="LoadCharacterTableButton" Content="Load character table" HorizontalAlignment="Left" VerticalAlignment="Top" Click="LoadCharacterTableButton_Click" Height="20" Width="112"/>
+                <Button x:Name="LoadRomFileButton" Content="Load ROM" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="112" Click="LoadRomFileButton_Click" Height="20" Margin="5,0,0,0"/>
+
+            </StackPanel>
+            <StackPanel x:Name="FiltersStackPanel" UseLayoutRounding="True">
+                <TabControl Visibility="Hidden" x:Name="TabControl" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="5,2,5,0">
+                    <TabItem Header="Step 1 - Add rules">
+                        <Grid Background="#FFE5E5E5">
+                            <StackPanel Margin="5,5,0,5" x:Name="FirstStackPanel" Orientation="Horizontal" HorizontalAlignment="Left" Width="407">
+
+                                <GroupBox Header="Options" Width="396" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" UseLayoutRounding="False">
+                                    <StackPanel Margin="5,5,0,5" Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Min Quantity" Width="109" HorizontalContentAlignment="Right"/>
+                                                <TextBox x:Name="MinQuantityTextBox" Width="28" TextAlignment="Center" ToolTip="" Margin="5,0,0,0" VerticalContentAlignment="Center" Text="0" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBox x:Name="MaxQuantityTextBox" Width="28" TextAlignment="Center" ToolTip="" Margin="5,0,0,0" VerticalContentAlignment="Center" Text="0" />
+                                                <Label Content="Max Quantity" Width="109"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Margin="5,5,0,5" Orientation="Horizontal">
+                                            <Label Content="Card Type" Width="70"/>
+                                            <ComboBox x:Name="CardTypeComboBox" Width="100" Margin="5,0,0,0" SelectionChanged="CardTypeComboBox_SelectionChanged">
+                                                <ComboBoxItem IsSelected="True" Content="Monster" />
+                                                <ComboBoxItem Content="Magic" />
+                                                <ComboBoxItem Content="Trap" />
+                                                <ComboBoxItem Content="Equip" />
+                                            </ComboBox>
+                                            <StackPanel x:Name="PanelMonsterType" Orientation="Horizontal">
+                                                <Label Content="Monster Type" Width="85" Margin="5,0,0,0"/>
+                                                <ComboBox x:Name="MonsterTypeComboBox" Width="100" Margin="5,0,0,0">
+                                                    <ComboBoxItem IsSelected="True" Content="Dragon"/>
+                                                    <ComboBoxItem Content="Spellcaster"/>
+                                                    <ComboBoxItem Content="Zombie"/>
+                                                    <ComboBoxItem Content="Warrior"/>
+                                                    <ComboBoxItem Content="Beast_Warrior"/>
+                                                    <ComboBoxItem Content="Beast"/>
+                                                    <ComboBoxItem Content="Winged_Beast"/>
+                                                    <ComboBoxItem Content="Fiend"/>
+                                                    <ComboBoxItem Content="Fairy"/>
+                                                    <ComboBoxItem Content="Insect"/>
+                                                    <ComboBoxItem Content="Dinosaur"/>
+                                                    <ComboBoxItem Content="Reptile"/>
+                                                    <ComboBoxItem Content="Fish"/>
+                                                    <ComboBoxItem Content="Sea_Serpent"/>
+                                                    <ComboBoxItem Content="Machine"/>
+                                                    <ComboBoxItem Content="Thunder"/>
+                                                    <ComboBoxItem Content="Aqua"/>
+                                                    <ComboBoxItem Content="Pyro"/>
+                                                    <ComboBoxItem Content="Rock"/>
+                                                    <ComboBoxItem Content="Plant"/>
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="PanelMonsterAttributes" Margin="5,5,0,5" Orientation="Vertical" HorizontalAlignment="Center">
+                                            <StackPanel Margin="5,5,0,5" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="Min Attack" Width="80" HorizontalContentAlignment="Right"/>
+                                                    <TextBox x:Name="MinAttackTextBox" Text="0" Width="40" TextAlignment="Center" ToolTip="" Margin="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBox x:Name="MaxAttackTextBox" Text="0" Width="40" TextAlignment="Center" ToolTip="" Margin="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                                                    <Label Content="Max Attack" Width="80"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Margin="5,5,0,5" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="Min Defense" Width="80" HorizontalContentAlignment="Right"/>
+                                                    <TextBox x:Name="MinDefenseTextBox" Text="0" Width="40" TextAlignment="Center" ToolTip="" Margin="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBox x:Name="MaxDefenseTextBox" Text="0" Width="40" TextAlignment="Center" ToolTip="" Margin="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                                                    <Label Content="Max Defense" Width="80"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Width="380" VerticalAlignment="Center">
+                                            <StackPanel Width="378" VerticalAlignment="Center">
+                                                <Label Content="Get Cards From:" Width="378" Height="24"/>
+
+                                                <ComboBox x:Name="GetCardsFromComboBox" Width="370" SelectionChanged="GetCardsFromComboBox_SelectionChanged">
+                                                    <ComboBoxItem IsSelected="True" Content="All Cards" />
+                                                    <ComboBoxItem Content="Initial Deck (all sets)" />
+                                                    <ComboBoxItem Content="Initial Deck (set 1 - monsters)" />
+                                                    <ComboBoxItem Content="Initial Deck (set 2 - monsters)" />
+                                                    <ComboBoxItem Content="Initial Deck (set 3 - monsters)" />
+                                                    <ComboBoxItem Content="Initial Deck (set 4 - monsters)" />
+                                                    <ComboBoxItem Content="Initial Deck (set 5 - DH/Geki)" />
+                                                    <ComboBoxItem Content="Initial Deck (set 6 - fields)" />
+                                                    <ComboBoxItem Content="Initial Deck (set 7 - equips)" />
+                                                    <ComboBoxItem Content="Custom" />
+                                                </ComboBox>
+                                                <TextBox x:Name="CustomCardsTextBox" Visibility="Collapsed" IsEnabled="False" Width="375" MaxLines="3" Margin="0,5,0,0" MinHeight="50" MaxWidth="370" VerticalScrollBarVisibility="Visible" />
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <Button x:Name="AddRuleToInitialDeckButton" Content="Add rule to initial deck" Margin="5,10,0,0" Height="28" Click="AddRuleToInitialDeckButton_Click"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Step 2 - Initial Deck Rules">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+
+                    <TabItem Header="Step 3 - Finish">
+                        <Grid Background="#FFE5E5E5">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="Initial Deck 1" />
+                                    <TextBlock x:Name="initialDeck1MaxTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">16</TextBlock>
+                                    <StackPanel x:Name="initialDeck1ControlPanel" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="initialDeck1MinusButton" Content="-" Width="24" Height="24" Margin="5,0,5,0" Click="initialDeck1MinusButton_Click"/>
+                                        <TextBox x:Name="initialDeck1Quantity" TextWrapping="Wrap" Text="0" Width="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                                        <Button x:Name="initialDeck1PlusButton" Content="+" Width="24" Height="24" Margin="5,0,0,0" Click="initialDeck1PlusButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="Initial Deck 2" />
+                                    <TextBlock x:Name="initialDeck2MaxTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">16</TextBlock>
+                                    <StackPanel x:Name="initialDeck2ControlPanel" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="initialDeck2MinusButton" Content="-" Width="24" Height="24" Margin="5,0,5,0" Click="initialDeck2MinusButton_Click"/>
+                                        <TextBox x:Name="initialDeck2Quantity" TextWrapping="Wrap" Text="0" Width="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                                        <Button x:Name="initialDeck2PlusButton" Content="+" Width="24" Height="24" Margin="5,0,0,0" Click="initialDeck2PlusButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="Initial Deck 3" />
+                                    <TextBlock x:Name="initialDeck3MaxTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"><Run Language="pt-br" Text="04"/></TextBlock>
+                                    <StackPanel x:Name="initialDeck3ControlPanel" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="initialDeck3MinusButton" Content="-" Width="24" Height="24" Margin="5,0,5,0" Click="initialDeck3MinusButton_Click"/>
+                                        <TextBox x:Name="initialDeck3Quantity" TextWrapping="Wrap" Text="0" Width="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                                        <Button x:Name="initialDeck3PlusButton" Content="+" Width="24" Height="24" Margin="5,0,0,0" Click="initialDeck3PlusButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="Initial Deck 4" />
+                                    <TextBlock x:Name="initialDeck4MaxTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"><Run Language="pt-br" Text="01"/></TextBlock>
+                                    <StackPanel x:Name="initialDeck4ControlPanel" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="initialDeck4MinusButton" Content="-" Width="24" Height="24" Margin="5,0,5,0" Click="initialDeck4MinusButton_Click"/>
+                                        <TextBox x:Name="initialDeck4Quantity" TextWrapping="Wrap" Text="0" Width="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                                        <Button x:Name="initialDeck4PlusButton" Content="+" Width="24" Height="24" Margin="5,0,0,0" Click="initialDeck4PlusButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="Initial Deck 5" />
+                                    <TextBlock x:Name="initialDeck5MaxTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"><Run Language="pt-br" Text="01"/></TextBlock>
+                                    <StackPanel x:Name="initialDeck5ControlPanel" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="initialDeck5MinusButton" Content="-" Width="24" Height="24" Margin="5,0,5,0" Click="initialDeck5MinusButton_Click"/>
+                                        <TextBox x:Name="initialDeck5Quantity" TextWrapping="Wrap" Text="0" Width="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                                        <Button x:Name="initialDeck5PlusButton" Content="+" Width="24" Height="24" Margin="5,0,0,0" Click="initialDeck5PlusButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="Initial Deck 6" />
+                                    <TextBlock x:Name="initialDeck6MaxTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"><Run Language="pt-br" Text="01"/></TextBlock>
+                                    <StackPanel x:Name="initialDeck6ControlPanel" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="initialDeck6MinusButton" Content="-" Width="24" Height="24" Margin="5,0,5,0" Click="initialDeck6MinusButton_Click"/>
+                                        <TextBox x:Name="initialDeck6Quantity" TextWrapping="Wrap" Text="0" Width="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                                        <Button x:Name="initialDeck6PlusButton" Content="+" Width="24" Height="24" Margin="5,0,0,0" Click="initialDeck6PlusButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="Initial Deck 7" />
+                                    <TextBlock x:Name="initialDeck7MaxTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"><Run Language="pt-br" Text="01"/></TextBlock>
+                                    <StackPanel x:Name="initialDeck7ControlPanel" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="initialDeck7MinusButton" Content="-" Width="24" Height="24" Margin="5,0,5,0"/>
+                                        <TextBox x:Name="initialDeck7Quantity" TextWrapping="Wrap" Text="0" Width="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                                        <Button x:Name="initialDeck7PlusButton" Content="+" Width="24" Height="24" Margin="5,0,0,0" Click="initialDeck7PlusButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <Button x:Name="WriteChangesButton" Content="Write changes" Width="112" Click="WriteChangesButton_Click" Height="20" VerticalAlignment="Center" Margin="0,10,0,10"/>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
