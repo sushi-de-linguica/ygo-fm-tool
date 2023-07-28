@@ -78,6 +78,7 @@
     <Compile Include="Domain\Enums\DeckEnums.cs" />
     <Compile Include="Domain\Models\Card.cs" />
     <Compile Include="Domain\Models\GameFile.cs" />
+    <Compile Include="Domain\Models\RuleItem.cs" />
     <Compile Include="Domain\Models\StarterDeck.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\Hexadecimal.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Usecases\Binary\BinChunk.cs" />
     <Compile Include="Usecases\Binary\CueFile.cs" />
     <Compile Include="Usecases\CustomDeckUseCase.cs" />
+    <Compile Include="Usecases\DropCardsFromDeckUseCase.cs" />
     <Compile Include="Usecases\LoadBinaryFileUseCase.cs" />
     <Compile Include="Usecases\LoadCardsDataUseCase.cs" />
     <Compile Include="Usecases\LoadCharacterTableUseCase.cs" />

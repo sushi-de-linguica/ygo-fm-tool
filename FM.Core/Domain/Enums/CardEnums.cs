@@ -35,7 +35,14 @@ namespace FM.Core.Domain.Enums
             Trap = 7
         }
 
-        public enum ECardType
+        // public enum ECardType
+        // {
+        //     Monster = 0,
+        //     Equip = 1,
+        //     Trap = 2,
+        // }
+
+        public enum EMonsterCardType
         {
             Dragon = 0,
             Spellcaster = 1,

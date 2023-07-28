@@ -27,6 +27,6 @@ namespace FM.Core.Application
         public static Dictionary<byte, char> CharacterTableDict = new Dictionary<byte, char>();
         public static Dictionary<char, byte> CharacterTableRDict = new Dictionary<char, byte>();
 
-
+        public static List<RuleItem> Rules = new List<RuleItem>();
     }
 }
